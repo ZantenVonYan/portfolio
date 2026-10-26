@@ -1,0 +1,289 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-display);
+
+  --color-stone-950: #0a0907;
+  --color-stone-900: #0f0d0b;
+  --color-stone-800: #1a1712;
+  --color-stone-700: #2a2418;
+  --color-stone-600: #3a3020;
+  --color-gold-300: #e8c97a;
+  --color-gold-400: #c9a84c;
+  --color-gold-500: #a8852e;
+  --color-gold-600: #7a5f1a;
+  --color-parchment-100: #f5eed8;
+  --color-parchment-200: #e8dcc8;
+  --color-parchment-300: #d4c4a8;
+  --color-parchment-400: #b8a488;
+  --color-parchment-500: #8a7a65;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  --background: #0f0d0b;
+  --foreground: #e8dcc8;
+  --card: #1a1712;
+  --card-foreground: #e8dcc8;
+  --popover: #1a1712;
+  --popover-foreground: #e8dcc8;
+  --primary: #c9a84c;
+  --primary-foreground: #0f0d0b;
+  --secondary: #2a2418;
+  --secondary-foreground: #d4c4a8;
+  --muted: #3a3020;
+  --muted-foreground: #8a7a65;
+  --accent: #a8852e;
+  --accent-foreground: #f5eed8;
+  --destructive: #7f1d1d;
+  --border: #3a3020;
+  --input: #3a3020;
+  --ring: #c9a84c;
+  --radius: 2px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Do not set scroll-behavior: smooth on html — it delays/breaks App Router
+   scroll restoration so case-study links appear to land on a broken page. */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+.font-display {
+  font-family: var(--font-display), "Times New Roman", serif;
+}
+
+.font-body {
+  font-family: var(--font-body), Georgia, serif;
+}
+
+.ornament {
+  display: inline-block;
+  color: var(--primary);
+  opacity: 0.7;
+}
+
+.gold-rule {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--primary), transparent);
+  opacity: 0.6;
+}
+
+.card-glow:hover {
+  box-shadow: 0 0 30px rgba(201, 168, 76, 0.12), 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Cover the 1px compositing seam that appears when a light screenshot
+   scales inside an overflow clip, and keep the zoom on one easing curve. */
+.card-zoom {
+  position: absolute;
+  inset: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  max-width: none;
+  object-fit: cover;
+  backface-visibility: hidden;
+  transform: translateZ(0) scale(1);
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .card-zoom {
+  transform: translateZ(0) scale(1.08);
+}
+
+/* Bordered actions: a gold plate eases in, the control lifts, and any arrow travels with it. */
+.cta {
+  position: relative;
+  isolation: isolate;
+  transition:
+    color 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(201, 168, 76, 0.16);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta:hover,
+.cta:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(201, 168, 76, 0.14);
+}
+
+.cta:hover::before,
+.cta:focus-visible::before {
+  transform: scaleX(1);
+}
+
+.cta:active {
+  transform: translateY(0);
+}
+
+.cta-secondary:hover,
+.cta-secondary:focus-visible {
+  color: #c9a84c;
+  border-color: #c9a84c;
+}
+
+.cta-nudge {
+  display: inline-block;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.cta:hover .cta-nudge-down,
+.cta:focus-visible .cta-nudge-down {
+  transform: translateY(3px);
+}
+
+.cta:hover .cta-nudge-right,
+.cta:focus-visible .cta-nudge-right,
+.link-nudge:hover .cta-nudge-right,
+.link-nudge:focus-visible .cta-nudge-right {
+  transform: translateX(5px);
+}
+
+.link-nudge {
+  transition: color 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.case-link {
+  transition: color 520ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.case-link-arrow {
+  display: inline-block;
+  transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.group:hover .case-link,
+.group:focus-within .case-link {
+  color: #e8c97a;
+}
+
+.group:hover .case-link-arrow,
+.group:focus-within .case-link-arrow {
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta,
+  .cta::before,
+  .cta-nudge,
+  .link-nudge,
+  .case-link,
+  .case-link-arrow {
+    transition: none;
+  }
+
+  .cta:hover,
+  .cta:focus-visible,
+  .cta:active {
+    transform: none;
+  }
+}
+
+.bg-stone-gradient {
+  background: linear-gradient(180deg, #0a0907 0%, #0f0d0b 30%, #12100d 100%);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.7s ease-out both;
+}
+
+.animate-delay-1 {
+  animation-delay: 0.1s;
+}
+.animate-delay-2 {
+  animation-delay: 0.25s;
+}
+.animate-delay-3 {
+  animation-delay: 0.4s;
+}
+.animate-delay-4 {
+  animation-delay: 0.55s;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
