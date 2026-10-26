@@ -24,7 +24,7 @@ jobs:
           sshpass -p "$SERVER_PASSWORD" \
             scp -o StrictHostKeyChecking=no \
             ana-portfolio.tar.gz \
-            "${SERVER_USERNAME}@storybook.bospear.com:/tmp/ana-portfolio.tar.gz"
+            "${SERVER_USERNAME}@ana-mangotic-rajkovic.bospear.com:/tmp/ana-portfolio.tar.gz"
         env:
           SERVER_USERNAME: ${{ secrets.SERVER_USERNAME }}
           SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
@@ -34,7 +34,7 @@ jobs:
         env:
           SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
         with:
-          host: storybook.bospear.com
+          host: ana-mangotic-rajkovic.bospear.com
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           envs: SERVER_PASSWORD
