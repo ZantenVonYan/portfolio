@@ -24,7 +24,7 @@ jobs:
           sshpass -p "$SERVER_PASSWORD" \
             scp -o StrictHostKeyChecking=no \
             ana-portfolio.tar.gz \
-            "${SERVER_USERNAME}@ana-mangotic-rajkovic.bospear.com:/tmp/ana-portfolio.tar.gz"
+            "${SERVER_USERNAME}@ana-mangotic-rajkovic.com:/tmp/ana-portfolio.tar.gz"
         env:
           SERVER_USERNAME: ${{ secrets.SERVER_USERNAME }}
           SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
@@ -34,7 +34,7 @@ jobs:
         env:
           SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
         with:
-          host: ana-mangotic-rajkovic.bospear.com
+          host: ana-mangotic-rajkovic.com
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           envs: SERVER_PASSWORD
@@ -63,7 +63,7 @@ jobs:
 
             # Replace only this site's block so other vhosts stay in the Caddyfile.
             tmp=$(mktemp)
-            sudo awk -v host="ana-mangotic-rajkovic.bospear.com" '
+            sudo awk -v host="ana-mangotic-rajkovic.com" '
               function delta(s,    i, n, ch) {
                 n = 0
                 for (i = 1; i <= length(s); i++) {
@@ -91,7 +91,7 @@ jobs:
               }
             ' /opt/caddy/Caddyfile > "$tmp"
             printf '\n%s {\n\treverse_proxy ana-portfolio:3000\n}\n' \
-              "ana-mangotic-rajkovic.bospear.com" >> "$tmp"
+              "ana-mangotic-rajkovic.com" >> "$tmp"
             sudo tee /opt/caddy/Caddyfile >/dev/null < "$tmp"
             rm -f "$tmp"
 
