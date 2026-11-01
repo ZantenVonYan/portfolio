@@ -110,7 +110,7 @@ export default function IllustrationGallery({ items }: { items: Illustration[] }
               <div>
                 <p
                   className="font-display text-[#c9a84c] tracking-widest mb-1"
-                  style={{ fontSize: "10px", letterSpacing: "0.22em" }}
+                  style={{ fontSize: "14px", letterSpacing: "0.14em" }}
                 >
                   {active.year} · {active.medium.toUpperCase()}
                 </p>

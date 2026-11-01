@@ -71,7 +71,7 @@ export default async function CaseStudyPage({
         <div className="max-w-4xl mx-auto">
           <p
             className="font-display text-[#c9a84c] tracking-widest mb-4"
-            style={{ fontSize: "13px", letterSpacing: "0.22em" }}
+            style={{ fontSize: "17px", letterSpacing: "0.14em" }}
           >
             {project.id} / {project.type.toUpperCase()}
           </p>
@@ -155,7 +155,7 @@ export default async function CaseStudyPage({
         <section>
           <p
             className="font-display text-[#c9a84c] tracking-widest mb-3"
-            style={{ fontSize: "13px", letterSpacing: "0.18em", marginBottom: "12px" }}
+            style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
           >
             THE CHALLENGE
           </p>
@@ -191,7 +191,7 @@ export default async function CaseStudyPage({
           <div>
             <p
               className="font-display text-[#c9a84c] tracking-widest mb-3"
-              style={{ fontSize: "13px", letterSpacing: "0.18em", marginBottom: "12px" }}
+              style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
             >
               MY CONTRIBUTION
             </p>
@@ -249,7 +249,7 @@ export default async function CaseStudyPage({
                   {approachVisualSection.eyebrow ? (
                     <p
                       className="font-display text-[#c9a84c] tracking-widest mb-3"
-                      style={{ fontSize: "13px", letterSpacing: "0.18em", marginBottom: "12px" }}
+                      style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
                     >
                       {approachVisualSection.eyebrow}
                     </p>
@@ -309,7 +309,7 @@ export default async function CaseStudyPage({
             <section aria-labelledby={`${project.slug}-metrics-heading`}>
               <p
                 className="font-display text-[#c9a84c] tracking-widest mb-3"
-                style={{ fontSize: "13px", letterSpacing: "0.18em", marginBottom: "12px" }}
+                style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
               >
                 SCOPE
               </p>
@@ -330,7 +330,7 @@ export default async function CaseStudyPage({
         <section>
           <p
             className="font-display text-[#c9a84c] tracking-widest mb-3"
-            style={{ fontSize: "13px", letterSpacing: "0.18em", marginBottom: "12px" }}
+            style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
           >
             KEY DECISIONS
           </p>
@@ -362,7 +362,7 @@ export default async function CaseStudyPage({
         <section>
           <p
             className="font-display text-[#c9a84c] tracking-widest mb-3"
-            style={{ fontSize: "13px", letterSpacing: "0.18em", marginBottom: "12px" }}
+            style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
           >
             OUTCOME
           </p>
@@ -440,7 +440,7 @@ export default async function CaseStudyPage({
           <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-[#c9a84c30]" />
           <p
             className="font-display text-[#c9a84c] tracking-widest mb-3"
-            style={{ fontSize: "13px", letterSpacing: "0.18em", marginBottom: "12px" }}
+            style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
           >
             LEADERSHIP LENS
           </p>

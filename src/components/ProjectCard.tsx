@@ -40,23 +40,25 @@ export default function ProjectCard({
               {project.id}
             </span>
           </div>
-          <div className="absolute top-3 right-3 z-[2]">
-            <span
-              className="inline-block font-display font-semibold text-[#e8dcc8] border border-[#867e72] px-2.5 py-1"
-              style={{
-                ...chipStyle,
-                background: "rgba(10, 9, 7, 0.82)",
-              }}
-            >
-              {project.year}
-            </span>
-          </div>
+          {project.year ? (
+            <div className="absolute top-3 right-3 z-[2]">
+              <span
+                className="inline-block font-display font-semibold text-[#e8dcc8] border border-[#867e72] px-2.5 py-1"
+                style={{
+                  ...chipStyle,
+                  background: "rgba(10, 9, 7, 0.82)",
+                }}
+              >
+                {project.year}
+              </span>
+            </div>
+          ) : null}
         </div>
 
         <div className="relative z-[2] bg-[#1a1712] p-8">
           <p
             className="font-display text-[#c9a84c] mb-2 tracking-widest uppercase"
-            style={{ fontSize: "13px", letterSpacing: "0.14em" }}
+            style={{ fontSize: "16px", letterSpacing: "0.12em" }}
           >
             {project.type}
           </p>
@@ -66,7 +68,7 @@ export default function ProjectCard({
           >
             {project.title}
           </h3>
-          <p className="font-body text-[#d4c4a8] mb-4" style={{ fontSize: "16px" }}>
+          <p className="font-body text-[#d4c4a8] mb-4" style={{ fontSize: "18px" }}>
             {project.domain}
           </p>
 
@@ -74,7 +76,7 @@ export default function ProjectCard({
 
           <p
             className="font-body text-[#e8dcc8] leading-relaxed mb-5"
-            style={{ fontSize: "17px", lineHeight: "1.7" }}
+            style={{ fontSize: "18px", lineHeight: "1.7" }}
           >
             {project.challenge}
           </p>

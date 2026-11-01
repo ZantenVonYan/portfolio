@@ -58,7 +58,7 @@ export default function CaseStudyPhotoSet({
         {label ? (
           <p
             className="font-display text-[#c9a84c] tracking-widest px-4 py-2.5 border-b border-[#3a3020] bg-[#12100d]"
-            style={{ fontSize: "9px", letterSpacing: "0.25em" }}
+            style={{ fontSize: "14px", letterSpacing: "0.14em" }}
           >
             {label}
           </p>
@@ -141,7 +141,7 @@ export default function CaseStudyPhotoSet({
                 {active.label ? (
                   <p
                     className="font-display text-[#c9a84c] tracking-widest mb-1"
-                    style={{ fontSize: "10px", letterSpacing: "0.22em" }}
+                    style={{ fontSize: "14px", letterSpacing: "0.14em" }}
                   >
                     {active.label}
                   </p>

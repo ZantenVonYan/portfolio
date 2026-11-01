@@ -52,7 +52,7 @@ export default function ResearchProtocol() {
     >
       <p
         className="font-display text-[#c9a84c] tracking-widest mb-3"
-        style={{ fontSize: "9px", letterSpacing: "0.3em" }}
+        style={{ fontSize: "17px", letterSpacing: "0.14em" }}
       >
         RESEARCH FRAMEWORK
       </p>

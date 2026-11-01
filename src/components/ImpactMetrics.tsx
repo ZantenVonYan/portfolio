@@ -41,14 +41,14 @@ export default function ImpactMetrics({
           </p>
           <p
             className="font-display text-[#d4c4a8] tracking-wider"
-            style={{ fontSize: "10px", letterSpacing: "0.14em", lineHeight: "1.45" }}
+            style={{ fontSize: "14px", letterSpacing: "0.1em", lineHeight: "1.45" }}
           >
             {metric.label.toUpperCase()}
           </p>
           {metric.description ? (
             <p
               className="font-body text-[#b8a488] mt-3 max-w-xs mx-auto"
-              style={{ fontSize: "14px", lineHeight: "1.6" }}
+              style={{ fontSize: "17px", lineHeight: "1.6" }}
             >
               {metric.description}
             </p>

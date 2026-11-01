@@ -38,7 +38,7 @@ export default function Nav() {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#3a302060] bg-[#0a0907cc] backdrop-blur-sm">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-wrap items-center justify-center sm:justify-between gap-x-4 gap-y-2">
         <Link
           href="/"
           onClick={(event) => {
@@ -50,12 +50,11 @@ export default function Nav() {
               }
             }
           }}
-          className="font-display text-[#c9a84c] hover:opacity-80 transition-opacity"
-          style={{ fontSize: "16px", letterSpacing: "0.14em" }}
+          className="font-display text-[#c9a84c] hover:opacity-80 transition-opacity text-[16px] sm:text-[18px] tracking-[0.12em] py-1"
         >
           Home
         </Link>
-        <div className="flex items-center gap-6 md:gap-10">
+        <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 sm:gap-x-6 md:gap-x-8">
           {isHome ? (
             (
               [
@@ -69,16 +68,14 @@ export default function Nav() {
               <SmoothScrollLink
                 key={label}
                 href={href}
-                className="font-display text-[#d4c4a8] hover:text-[#c9a84c] transition-colors duration-300 hidden sm:block"
-                style={{ fontSize: "13px", letterSpacing: "0.14em" }}
+                className="font-display text-[#d4c4a8] hover:text-[#c9a84c] transition-colors duration-300 text-[15px] sm:text-[16px] tracking-[0.1em] py-1"
               >
                 {label.toUpperCase()}
               </SmoothScrollLink>
             ))
           ) : (
             <WorkHashLink
-              className="font-display text-[#d4c4a8] hover:text-[#c9a84c] transition-colors duration-300 flex items-center gap-2"
-              style={{ fontSize: "13px", letterSpacing: "0.14em" }}
+              className="font-display text-[#d4c4a8] hover:text-[#c9a84c] transition-colors duration-300 flex items-center gap-2 text-[15px] sm:text-[16px] tracking-[0.1em] py-1"
             >
               ← BACK TO PORTFOLIO
             </WorkHashLink>

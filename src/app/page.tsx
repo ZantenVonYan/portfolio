@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Nav from "@/components/Nav";
 import OrnamentalDivider from "@/components/OrnamentalDivider";
 import ProjectCard from "@/components/ProjectCard";
@@ -78,7 +77,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-stone-gradient text-[#e8dcc8]">
       <Nav />
 
-      <header className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 pb-24 overflow-hidden">
+      <header className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-48 sm:pt-20 pb-24 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -93,7 +92,7 @@ export default function HomePage() {
 
           <p
             className="font-display text-[#c9a84c] tracking-widest uppercase mb-8 animate-in animate-delay-1"
-            style={{ fontSize: "13px", letterSpacing: "0.22em" }}
+            style={{ fontSize: "17px", letterSpacing: "0.14em" }}
           >
             Portfolio · Lead UX/UI Designer
           </p>
@@ -125,7 +124,7 @@ export default function HomePage() {
           <p
             className="font-body text-[#b1aba0] mb-10 animate-in animate-delay-3"
             style={{
-              fontSize: "clamp(14px, 1.8vw, 17px)",
+              fontSize: "clamp(17px, 1.9vw, 19px)",
               lineHeight: "1.7",
               maxWidth: "560px",
               margin: "0 auto 40px",
@@ -148,7 +147,7 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section id="work" className="max-w-6xl mx-auto px-6 py-24 scroll-mt-24">
+      <section id="work" className="max-w-6xl mx-auto px-6 py-24 scroll-mt-36">
         <div className="text-center mb-16">
           <SectionLabel>Selected Work</SectionLabel>
           <h2
@@ -159,11 +158,17 @@ export default function HomePage() {
           </h2>
           <OrnamentalDivider />
           <p
-            className="font-body text-[#8a7a65] mt-4 max-w-xl mx-auto"
-            style={{ fontSize: "15px", lineHeight: "1.7" }}
+            className="font-body text-[#d4c4a8] mt-4 max-w-xl mx-auto"
+            style={{ fontSize: "18px", lineHeight: "1.7" }}
           >
             Both sides of my practice: products shaped by hand, and the shared tools that help a
             design team work to one standard.
+          </p>
+          <p
+            className="font-body text-[#d4c4a8] mt-3 max-w-xl mx-auto"
+            style={{ fontSize: "18px", lineHeight: "1.7" }}
+          >
+            New projects will be added here as time passes.
           </p>
         </div>
 
@@ -192,7 +197,7 @@ export default function HomePage() {
               </span>
               <p
                 className="font-display text-[#c9a84c] tracking-widest uppercase mb-2"
-                style={{ fontSize: "13px", letterSpacing: "0.14em" }}
+                style={{ fontSize: "16px", letterSpacing: "0.12em" }}
               >
                 {productCatalogHighlight.type}
               </p>
@@ -212,7 +217,7 @@ export default function HomePage() {
           </div>
           <p
             className="font-body text-[#b8a488] mb-8"
-            style={{ fontSize: "16px", lineHeight: "1.75" }}
+            style={{ fontSize: "18px", lineHeight: "1.75" }}
           >
             {productCatalogHighlight.overview}
           </p>
@@ -225,7 +230,7 @@ export default function HomePage() {
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <p className="font-body text-[#b8a488]" style={{ fontSize: "15px", lineHeight: "1.7" }}>
+                <p className="font-body text-[#d4c4a8]" style={{ fontSize: "18px", lineHeight: "1.7" }}>
                   {item}
                 </p>
               </li>
@@ -237,14 +242,14 @@ export default function HomePage() {
           />
           <p
             className="font-body text-[#b8a488] mt-8"
-            style={{ fontSize: "16px", lineHeight: "1.75" }}
+            style={{ fontSize: "18px", lineHeight: "1.75" }}
           >
             {productCatalogHighlight.outcome}
           </p>
         </article>
       </section>
 
-      <section id="impact" className="border-t border-[#3a3020] py-20 px-6 scroll-mt-24">
+      <section id="impact" className="border-t border-[#3a3020] py-20 px-6 scroll-mt-36">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <SectionLabel>Selected Impact</SectionLabel>
@@ -256,8 +261,8 @@ export default function HomePage() {
             </h2>
             <OrnamentalDivider />
             <p
-              className="font-body text-[#8a7a65] mt-4 max-w-xl mx-auto"
-              style={{ fontSize: "15px", lineHeight: "1.7" }}
+              className="font-body text-[#d4c4a8] mt-4 max-w-xl mx-auto"
+              style={{ fontSize: "18px", lineHeight: "1.7" }}
             >
               Scope of product ownership, client collaboration, mentorship, and practice leadership.
             </p>
@@ -268,7 +273,7 @@ export default function HomePage() {
 
       <section
         id="leadership"
-        className="border-t border-[#3a3020] py-24 px-6 scroll-mt-24"
+        className="border-t border-[#3a3020] py-24 px-6 scroll-mt-36"
         style={{ background: "#12100d" }}
       >
         <div className="max-w-5xl mx-auto">
@@ -283,7 +288,7 @@ export default function HomePage() {
             <OrnamentalDivider />
             <p
               className="font-body text-[#d4c4a8] mt-4 max-w-xl mx-auto"
-              style={{ fontSize: "16px", lineHeight: "1.7" }}
+              style={{ fontSize: "18px", lineHeight: "1.7" }}
             >
               Clarity over complexity. Collaboration over silos. Quality through consistency.
             </p>
@@ -306,7 +311,7 @@ export default function HomePage() {
                 >
                   {pillar.title}
                 </h3>
-                <p className="font-body text-[#8a7a65]" style={{ fontSize: "14px", lineHeight: "1.7" }}>
+                <p className="font-body text-[#d4c4a8]" style={{ fontSize: "17px", lineHeight: "1.7" }}>
                   {pillar.body}
                 </p>
               </div>
@@ -337,81 +342,15 @@ export default function HomePage() {
             <OrnamentalDivider />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {earlierWork.map((project) => (
-              <article
-                key={project.id}
-                className="border border-[#3a3020] bg-[#1a1712] relative group overflow-hidden card-glow transition-shadow duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              >
-                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-[#c9a84c30] z-10 pointer-events-none" />
-                <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-[#c9a84c30] z-10 pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#c9a84c30] z-10 pointer-events-none" />
-                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#c9a84c30] z-10 pointer-events-none" />
-
-                <Link
-                  href={`/project/${project.slug}`}
-                  className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a84c]"
-                >
-                  <div className="relative aspect-video overflow-hidden bg-[#1a1712] isolate">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={project.previewUrl}
-                      alt={project.previewAlt}
-                      className="card-zoom object-top"
-                    />
-                    <div className="absolute inset-0 z-[1] bg-gradient-to-t from-[#1a1712] via-transparent to-transparent" />
-                    <div className="absolute top-3 left-3 z-[2]">
-                      <span
-                        className="inline-block font-display font-semibold text-[#e8dcc8] tracking-widest px-2.5 py-1 border border-[#867e72]"
-                        style={{
-                          fontSize: "13px",
-                          letterSpacing: "0.18em",
-                          background: "rgba(10, 9, 7, 0.82)",
-                        }}
-                      >
-                        {project.id}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="relative z-[2] bg-[#1a1712] p-8">
-                    <div className="flex items-start justify-between gap-4 mb-3">
-                      <h3
-                        className="font-display text-[#e8dcc8] font-semibold"
-                        style={{ fontSize: "22px" }}
-                      >
-                        {project.title}
-                      </h3>
-                      <span
-                        className="font-display font-semibold text-[#e8dcc8] border border-[#867e72] px-2.5 py-1 whitespace-nowrap flex-shrink-0"
-                        style={{ fontSize: "13px", letterSpacing: "0.08em" }}
-                      >
-                        {project.type.toUpperCase()}
-                      </span>
-                    </div>
-                    <p className="font-body text-[#d4c4a8] mb-3" style={{ fontSize: "16px" }}>
-                      {project.domain}
-                    </p>
-                    <div className="gold-rule mb-3" />
-                    <p className="font-body text-[#e8dcc8] mb-5" style={{ fontSize: "16px", lineHeight: "1.7" }}>
-                      {project.challenge}
-                    </p>
-                    <span
-                      className="case-link inline-flex items-center gap-1.5 font-display text-[#c9a84c]"
-                      style={{ fontSize: "13px", letterSpacing: "0.16em" }}
-                    >
-                      VIEW CASE STUDY
-                      <span className="case-link-arrow" aria-hidden="true">→</span>
-                    </span>
-                  </div>
-                </Link>
-              </article>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {earlierWork.map((project, i) => (
+              <ProjectCard key={project.id} project={project} index={i} />
             ))}
           </div>
         </div>
       </section>
 
-      <section id="illustration" className="border-t border-[#3a3020] py-24 px-6 scroll-mt-24">
+      <section id="illustration" className="border-t border-[#3a3020] py-24 px-6 scroll-mt-36">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <SectionLabel>Illustration</SectionLabel>
@@ -423,8 +362,8 @@ export default function HomePage() {
             </h2>
             <OrnamentalDivider />
             <p
-              className="font-body text-[#8a7a65] mt-4 max-w-xl mx-auto"
-              style={{ fontSize: "15px", lineHeight: "1.7" }}
+              className="font-body text-[#d4c4a8] mt-4 max-w-xl mx-auto"
+              style={{ fontSize: "18px", lineHeight: "1.7" }}
             >
               Selected personal illustrations — fantasy, character design, and narrative work that
               shaped my eye for atmosphere, storytelling, and craft.
@@ -436,7 +375,7 @@ export default function HomePage() {
 
       <section
         id="about"
-        className="border-t border-[#3a3020] py-24 px-6 scroll-mt-24"
+        className="border-t border-[#3a3020] py-24 px-6 scroll-mt-36"
         style={{ background: "#12100d" }}
       >
         <div className="max-w-5xl mx-auto">
@@ -485,7 +424,7 @@ export default function HomePage() {
             <div className="space-y-5">
               <p
                 className="font-body text-[#d4c4a8] leading-relaxed"
-                style={{ fontSize: "17px", lineHeight: "1.8" }}
+                style={{ fontSize: "18px", lineHeight: "1.8" }}
               >
                 I&apos;m a Lead UX/UI Designer connecting product strategy, research, and hands-on
                 design delivery. I lead initiatives from discovery to implementation, help teams
@@ -494,7 +433,7 @@ export default function HomePage() {
               </p>
               <p
                 className="font-body text-[#b8a488] leading-relaxed"
-                style={{ fontSize: "16px", lineHeight: "1.8" }}
+                style={{ fontSize: "18px", lineHeight: "1.8" }}
               >
                 My role extends beyond individual features: I guide design direction and quality,
                 mentor designers through constructive reviews, strengthen design systems, reusable
@@ -503,7 +442,7 @@ export default function HomePage() {
               </p>
               <p
                 className="font-body text-[#b8a488] leading-relaxed"
-                style={{ fontSize: "16px", lineHeight: "1.8" }}
+                style={{ fontSize: "18px", lineHeight: "1.8" }}
               >
                 A multidisciplinary foundation shapes my approach. Over four years in professional
                 UX/UI, and seven years as a physics educator, I learned to work analytically and to
@@ -513,12 +452,19 @@ export default function HomePage() {
               </p>
               <p
                 className="font-body text-[#b8a488] leading-relaxed"
-                style={{ fontSize: "16px", lineHeight: "1.8" }}
+                style={{ fontSize: "18px", lineHeight: "1.8" }}
               >
                 I treat design as both a creative and analytical practice: understand the problem,
                 test how the pieces fit, and involve the right people until it holds. What motivates
                 me most is a lasting impact — through the products I design, the people I support,
                 and the practices I help improve.
+              </p>
+              <p
+                className="font-body text-[#b8a488] leading-relaxed"
+                style={{ fontSize: "18px", lineHeight: "1.8" }}
+              >
+                I&apos;m also working on AI topics, using Microsoft Copilot, Claude, and Cursor.
+                This site will be updated with new projects as time passes.
               </p>
               <p className="font-body text-[#e8c97a]" style={{ fontSize: "17px", lineHeight: "1.6" }}>
                 &quot;Structure, curiosity, clarity, and care for the tools of the craft.&quot;
@@ -536,7 +482,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="border-t border-[#3a3020] py-24 px-6 scroll-mt-24">
+      <section id="contact" className="border-t border-[#3a3020] py-24 px-6 scroll-mt-36">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-6 flex justify-center text-[#c9a84c]" style={{ opacity: 0.85 }}>
             <PotionIcon size={52} />
@@ -550,8 +496,8 @@ export default function HomePage() {
           </h2>
           <OrnamentalDivider />
           <p
-            className="font-body text-[#b8a488] mt-6 mb-10"
-            style={{ fontSize: "17px", lineHeight: "1.7" }}
+            className="font-body text-[#d4c4a8] mt-6 mb-10"
+            style={{ fontSize: "18px", lineHeight: "1.7" }}
           >
             Better products start at the bench: clear thinking, then careful making. I&apos;m open to
             remote Lead and Principal UX/UI roles in B2B SaaS and enterprise organizations, as well as

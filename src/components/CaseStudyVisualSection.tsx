@@ -51,7 +51,7 @@ export default function CaseStudyVisualSection({
           {section.eyebrow ? (
             <p
               className="font-display text-[#c9a84c] tracking-widest mb-3"
-              style={{ fontSize: "13px", letterSpacing: "0.18em", marginBottom: "12px" }}
+              style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
             >
               {section.eyebrow}
             </p>
