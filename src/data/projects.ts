@@ -442,7 +442,7 @@ export const projects: Project[] = [
     domain: "AI voice recognition for dental records",
     tags: ["AI/UX", "Concept", "Healthcare", "Interaction Design"],
     year: "2026",
-    figmaUrl: "https://www.figma.com/design/rpM5irycDSBqyLaS6edKJh/Project-3?node-id=0-1",
+    figmaUrl: "https://www.figma.com/design/9Cz6uls92rDhWPKaQHO2QB/ADENTI-Design-system?node-id=0-1&t=ZQkeHqh55pat5efj-1",
     siteUrl: "https://adenti.org/",
     previewUrl: "/screenshots/heroes/dentai-assist.jpg",
     previewAlt: "AdentI product interface and component patterns",
