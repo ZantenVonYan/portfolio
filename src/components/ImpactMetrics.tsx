@@ -2,6 +2,8 @@ export type ImpactMetric = {
   value: string;
   label: string;
   description?: string;
+  /** Pages or sections this number refers to. */
+  links?: { href: string; label: string }[];
 };
 
 function valueSize(value: string) {
@@ -51,6 +53,20 @@ export default function ImpactMetrics({
               style={{ fontSize: "17px", lineHeight: "1.6" }}
             >
               {metric.description}
+            </p>
+          ) : null}
+          {metric.links && metric.links.length > 0 ? (
+            <p className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1">
+              {metric.links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="font-display text-[#c9a84c] underline decoration-[#c9a84c66] underline-offset-4 hover:text-[#e8c97a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c97a]"
+                  style={{ fontSize: "14px", letterSpacing: "0.06em" }}
+                >
+                  {link.label}
+                </a>
+              ))}
             </p>
           ) : null}
         </li>

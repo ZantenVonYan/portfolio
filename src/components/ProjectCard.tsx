@@ -6,9 +6,12 @@ const chipStyle = { fontSize: "13px", letterSpacing: "0.08em" } as const;
 export default function ProjectCard({
   project,
   index,
+  headingLevel = 3,
 }: {
   project: Project;
   index: number;
+  /** Use 4 when the card sits under a group heading. */
+  headingLevel?: 3 | 4;
 }) {
   return (
     <article
@@ -19,7 +22,11 @@ export default function ProjectCard({
       <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-[#c9a84c30] z-10 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-[#c9a84c30] z-10 pointer-events-none" />
 
-      <Link href={`/project/${project.slug}`} className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a84c]">
+      <Link
+        href={`/project/${project.slug}`}
+        aria-label={`View the ${project.title} case study`}
+        className="block focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a84c]"
+      >
         <div className="relative h-56 overflow-hidden bg-[#1a1712] isolate">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -62,12 +69,21 @@ export default function ProjectCard({
           >
             {project.type}
           </p>
-          <h3
-            className="font-display text-[#e8dcc8] font-semibold leading-tight mb-2"
-            style={{ fontSize: "26px" }}
-          >
-            {project.title}
-          </h3>
+          {headingLevel === 4 ? (
+            <h4
+              className="font-display text-[#e8dcc8] font-semibold leading-tight mb-2"
+              style={{ fontSize: "26px" }}
+            >
+              {project.title}
+            </h4>
+          ) : (
+            <h3
+              className="font-display text-[#e8dcc8] font-semibold leading-tight mb-2"
+              style={{ fontSize: "26px" }}
+            >
+              {project.title}
+            </h3>
+          )}
           <p className="font-body text-[#d4c4a8] mb-4" style={{ fontSize: "18px" }}>
             {project.domain}
           </p>

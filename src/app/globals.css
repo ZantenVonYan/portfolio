@@ -81,6 +81,11 @@ html {
   scroll-behavior: auto;
 }
 
+/* Clears the fixed nav. --nav-offset is set from the nav's real height. */
+.anchor-target {
+  scroll-margin-top: var(--nav-offset, 5.5rem);
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -110,6 +115,28 @@ body {
 
 .font-body {
   font-family: var(--font-body), Georgia, serif;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 0;
+  z-index: 80;
+  transform: translateY(-150%);
+  background: #c9a84c;
+  color: #0a0907;
+  padding: 0.65rem 1rem;
+  font-family: var(--font-display), "Times New Roman", serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  transform: translateY(0.75rem);
+  outline: 2px solid #e8c97a;
+  outline-offset: 3px;
 }
 
 .ornament {
@@ -230,19 +257,53 @@ body {
   transform: translateX(6px);
 }
 
+.dialog-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-display), "Times New Roman", serif;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  color: #e8dcc8;
+}
+
+.dialog-close:hover {
+  color: #c9a84c;
+}
+
+.dialog-close:focus-visible {
+  outline: 2px solid #e8c97a;
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cta,
   .cta::before,
   .cta-nudge,
   .link-nudge,
   .case-link,
-  .case-link-arrow {
+  .case-link-arrow,
+  .card-zoom,
+  .card-glow,
+  .animate-in {
+    animation: none;
     transition: none;
   }
 
   .cta:hover,
   .cta:focus-visible,
-  .cta:active {
+  .cta:active,
+  .group:hover .card-zoom {
     transform: none;
   }
 }

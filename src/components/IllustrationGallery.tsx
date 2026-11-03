@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import type { Illustration } from "@/data/illustrations";
+import { useModalDialog } from "@/components/useModalDialog";
 
 export default function IllustrationGallery({ items }: { items: Illustration[] }) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const active = items.find((item) => item.id === activeId) ?? null;
+  const { dialogRef, closeRef, rememberTrigger } = useModalDialog(activeId !== null);
 
   useEffect(() => {
     if (!active) return;
@@ -37,7 +39,10 @@ export default function IllustrationGallery({ items }: { items: Illustration[] }
           <button
             key={item.id}
             type="button"
-            onClick={() => setActiveId(item.id)}
+            onClick={() => {
+              rememberTrigger();
+              setActiveId(item.id);
+            }}
             className="group relative text-left border border-[#3a3020] bg-[#1a1712] overflow-hidden card-glow transition-shadow duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a84c]"
           >
             <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#c9a84c30] z-10" />
@@ -81,6 +86,7 @@ export default function IllustrationGallery({ items }: { items: Illustration[] }
 
       {active && (
         <div
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label={`${active.title}, ${active.year}`}
@@ -89,10 +95,10 @@ export default function IllustrationGallery({ items }: { items: Illustration[] }
           onClick={() => setActiveId(null)}
         >
           <button
+            ref={closeRef}
             type="button"
             onClick={() => setActiveId(null)}
-            className="absolute top-5 right-5 font-display text-[#e8dcc8] hover:text-[#c9a84c] transition-colors"
-            style={{ fontSize: "10px", letterSpacing: "0.2em" }}
+            className="dialog-close"
           >
             CLOSE ✕
           </button>

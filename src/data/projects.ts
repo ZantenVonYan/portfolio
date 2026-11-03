@@ -17,7 +17,8 @@ export type Project = {
   year: string;
   previewUrl: string;
   previewAlt: string;
-  figmaUrl: string;
+  /** Public Figma file, only when it can be shared. */
+  figmaUrl?: string;
   /** Public product site, when one exists. */
   siteUrl?: string;
   challenge: string;
@@ -51,7 +52,6 @@ export const projects: Project[] = [
     domain: "Professional networking for the food industry",
     tags: ["UX Strategy", "Research", "Content Design", "B2C"],
     year: "2025",
-    figmaUrl: "https://www.figma.com/design/Wz6IPRVaPeO7f93YQ0kdUE/Project-2?node-id=0-1",
     previewUrl: "/screenshots/case-studies/foodlink/04-saved-dashboard.png",
     previewAlt: "FoodLink Pro saved dashboard with populated content and a Customize Widgets entry point",
     challenge:
@@ -230,7 +230,6 @@ export const projects: Project[] = [
     domain: "B2B food supply & compliance platform",
     tags: ["UX Research", "End-to-End", "B2B", "Compliance"],
     year: "2025–2026",
-    figmaUrl: "https://www.figma.com/design/0cTivhATbqonVIVaJ68xs0/Project-1?node-id=0-1",
     previewUrl: "/screenshots/heroes/supply-proof.jpg",
     previewAlt: "SupplyProof supplier questionnaire with section completion indicators",
     challenge:
@@ -631,8 +630,6 @@ export const projects: Project[] = [
     domain: "Shared research standards & team systems",
     tags: ["Design Ops", "Research Repository", "Team Enablement", "Systems"],
     year: "2026",
-    figmaUrl:
-      "https://www.figma.com/design/Ci33cgHiUqweXP66NMkK1e/Random-all-Qcerris-projects?node-id=0-1&t=RMghTGnQKhmHhyzf-1",
     previewUrl: "/screenshots/heroes/ux-practice-framework.jpg",
     previewAlt: "UX Practice Framework shared research and design guidelines",
     challenge:
@@ -721,8 +718,6 @@ export const projects: Project[] = [
     tags: ["Logistics", "Marketplace", "Responsive"],
     year: "",
     earlier: true,
-    figmaUrl:
-      "https://www.figma.com/design/Ci33cgHiUqweXP66NMkK1e/Random-all-Qcerris-projects?node-id=2002-26681",
     previewUrl: "/screenshots/case-studies/demurrage/01-batch-overview.jpg",
     previewAlt: "Demurrage Dash marketplace with a batch list and the route open beside it",
     challenge:
@@ -813,8 +808,6 @@ export const projects: Project[] = [
     tags: ["Website", "Account", "Insurance"],
     year: "",
     earlier: true,
-    figmaUrl:
-      "https://www.figma.com/design/Ci33cgHiUqweXP66NMkK1e/Random-all-Qcerris-projects?node-id=2002-26683",
     previewUrl: "/screenshots/case-studies/stepup/01-homepage.jpg",
     previewAlt: "StepUP Insurance homepage with navigation and a path to quotes",
     challenge:
