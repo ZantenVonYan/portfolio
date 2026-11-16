@@ -48,7 +48,7 @@ export default function ResearchProtocol() {
     <section
       id="research-protocol"
       aria-labelledby="research-protocol-heading"
-      className="scroll-mt-28"
+      className="anchor-target"
     >
       <p
         className="font-display text-[#c9a84c] tracking-widest mb-3"
@@ -121,7 +121,7 @@ export default function ResearchProtocol() {
         <section
           id="phase-problem-definition"
           aria-labelledby="phase-problem-definition-heading"
-          className="scroll-mt-28"
+          className="anchor-target"
         >
           <p
             className="font-display text-[#c9a84c]"
@@ -142,7 +142,7 @@ export default function ResearchProtocol() {
         <section
           id="phase-hypothesis-definition"
           aria-labelledby="phase-hypothesis-definition-heading"
-          className="scroll-mt-28 border-t border-[#3a3020] pt-14"
+          className="anchor-target border-t border-[#3a3020] pt-14"
         >
           <p
             className="font-display text-[#c9a84c]"
@@ -169,7 +169,7 @@ export default function ResearchProtocol() {
         <section
           id="phase-choose-methods"
           aria-labelledby="phase-choose-methods-heading"
-          className="scroll-mt-28 border-t border-[#3a3020] pt-14"
+          className="anchor-target border-t border-[#3a3020] pt-14"
         >
           <p
             className="font-display text-[#c9a84c]"
@@ -265,7 +265,7 @@ export default function ResearchProtocol() {
                     key={group.id}
                     id={group.id}
                     aria-labelledby={`${group.id}-heading`}
-                    className="scroll-mt-28"
+                    className="anchor-target"
                   >
                     <h5
                       id={`${group.id}-heading`}
@@ -307,7 +307,7 @@ export default function ResearchProtocol() {
         <section
           id="phase-testing"
           aria-labelledby="phase-testing-heading"
-          className="scroll-mt-28 border-t border-[#3a3020] pt-14"
+          className="anchor-target border-t border-[#3a3020] pt-14"
         >
           <p
             className="font-display text-[#c9a84c]"
@@ -345,7 +345,7 @@ export default function ResearchProtocol() {
         <section
           id="phase-conclusion"
           aria-labelledby="phase-conclusion-heading"
-          className="scroll-mt-28 border-t border-[#3a3020] pt-14"
+          className="anchor-target border-t border-[#3a3020] pt-14"
         >
           <p
             className="font-display text-[#c9a84c]"

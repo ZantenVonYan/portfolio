@@ -7,6 +7,8 @@ type Props = {
   className?: string;
   style?: CSSProperties;
   children: ReactNode;
+  /** Marks the nav item for the section currently in view. */
+  current?: boolean;
 };
 
 function easeOut(t: number) {
@@ -14,6 +16,31 @@ function easeOut(t: number) {
 }
 
 let frame = 0;
+
+export function navScrollOffset() {
+  const fromVar = Number.parseFloat(
+    getComputedStyle(document.documentElement).getPropertyValue("--nav-offset"),
+  );
+  const navHeight = document.querySelector("nav")?.getBoundingClientRect().height ?? 72;
+  return Number.isFinite(fromVar) ? fromVar : navHeight + 16;
+}
+
+/**
+ * A section near the bottom cannot move up to the nav unless the page is
+ * tall enough. Grow the end spacer by only the missing distance.
+ */
+export function ensureAnchorReachable(target: HTMLElement) {
+  const offset = navScrollOffset();
+  const top = target.getBoundingClientRect().top + window.scrollY;
+  const spacer = document.getElementById("scroll-end-spacer");
+  const existing = spacer ? spacer.offsetHeight : 0;
+  const scrollHeightWithout = document.documentElement.scrollHeight - existing;
+  const needed = Math.max(0, Math.ceil(top - offset + window.innerHeight - scrollHeightWithout));
+  if (spacer && spacer.offsetHeight !== needed) {
+    spacer.style.height = `${needed}px`;
+  }
+  return top - offset;
+}
 
 /** One in-page scroll at a time, so a second nav click takes over cleanly. */
 export function smoothScrollTo(top: number) {
@@ -40,7 +67,7 @@ export function smoothScrollTo(top: number) {
   frame = window.requestAnimationFrame(step);
 }
 
-export default function SmoothScrollLink({ href, className, style, children }: Props) {
+export default function SmoothScrollLink({ href, className, style, children, current }: Props) {
   function onClick(event: MouseEvent<HTMLAnchorElement>) {
     if (
       event.defaultPrevented ||
@@ -58,14 +85,20 @@ export default function SmoothScrollLink({ href, className, style, children }: P
     if (!target) return;
 
     event.preventDefault();
-    const margin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
-    const top = target.getBoundingClientRect().top + window.scrollY - margin;
-    smoothScrollTo(top);
+    if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
+    smoothScrollTo(ensureAnchorReachable(target));
     history.pushState(null, "", href);
   }
 
   return (
-    <a href={href} className={className} style={style} onClick={onClick}>
+    <a
+      href={href}
+      className={className}
+      style={style}
+      onClick={onClick}
+      aria-current={current ? "location" : undefined}
+    >
       {children}
     </a>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useModalDialog } from "@/components/useModalDialog";
 
 type Photo = {
   src: string;
@@ -20,6 +21,7 @@ export default function CaseStudyPhotoSet({
 }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const active = activeIndex === null ? null : photos[activeIndex];
+  const { dialogRef, closeRef, rememberTrigger } = useModalDialog(activeIndex !== null);
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -68,7 +70,10 @@ export default function CaseStudyPhotoSet({
             <button
               key={photo.src}
               type="button"
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                rememberTrigger();
+                setActiveIndex(index);
+              }}
               className="relative aspect-[3/4] overflow-hidden bg-[#0a0907] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#c9a84c]"
               aria-label={`View larger: ${photo.alt}`}
             >
@@ -89,6 +94,7 @@ export default function CaseStudyPhotoSet({
 
       {active && activeIndex !== null ? (
         <div
+          ref={dialogRef}
           role="dialog"
           aria-modal="true"
           aria-label={active.label ?? active.alt}
@@ -97,10 +103,10 @@ export default function CaseStudyPhotoSet({
           onClick={() => setActiveIndex(null)}
         >
           <button
+            ref={closeRef}
             type="button"
             onClick={() => setActiveIndex(null)}
-            className="absolute top-5 right-5 font-display text-[#e8dcc8] hover:text-[#c9a84c] transition-colors"
-            style={{ fontSize: "10px", letterSpacing: "0.2em" }}
+            className="dialog-close"
           >
             CLOSE ✕
           </button>
@@ -121,7 +127,7 @@ export default function CaseStudyPhotoSet({
                     type="button"
                     onClick={showPrevious}
                     aria-label="Previous photo"
-                    className="absolute left-3 top-1/2 -translate-y-1/2 font-display text-[#e8dcc8] border border-[#867e72] bg-[#0a0907]/80 px-3 py-2 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 min-h-11 min-w-11 font-display text-[#e8dcc8] border border-[#867e72] bg-[#0a0907]/80 px-3 py-2 hover:text-[#c9a84c] hover:border-[#c9a84c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8c97a] transition-colors"
                   >
                     ←
                   </button>
@@ -129,7 +135,7 @@ export default function CaseStudyPhotoSet({
                     type="button"
                     onClick={showNext}
                     aria-label="Next photo"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 font-display text-[#e8dcc8] border border-[#867e72] bg-[#0a0907]/80 px-3 py-2 hover:text-[#c9a84c] hover:border-[#c9a84c] transition-colors"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 min-h-11 min-w-11 font-display text-[#e8dcc8] border border-[#867e72] bg-[#0a0907]/80 px-3 py-2 hover:text-[#c9a84c] hover:border-[#c9a84c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e8c97a] transition-colors"
                   >
                     →
                   </button>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Nav, { WorkHashLink } from "@/components/Nav";
+import SmoothScrollLink from "@/components/SmoothScrollLink";
 import OrnamentalDivider from "@/components/OrnamentalDivider";
 import CaseStudyVisualSection from "@/components/CaseStudyVisualSection";
 import ResearchProtocol from "@/components/ResearchProtocol";
@@ -14,7 +15,7 @@ function PointList({ items }: { items: string[] }) {
         <li key={`${i}-${item}`} className="flex items-start gap-5 border-l border-[#3a3020] pl-5">
           <span
             className="font-display text-[#c9a84c] flex-shrink-0 mt-1"
-            style={{ fontSize: "11px", opacity: 0.6, letterSpacing: "0.1em" }}
+            style={{ fontSize: "11px", letterSpacing: "0.1em" }}
           >
             {String(i + 1).padStart(2, "0")}
           </span>
@@ -67,13 +68,14 @@ export default async function CaseStudyPage({
     <div className="min-h-screen bg-stone-gradient text-[#e8dcc8]">
       <Nav />
 
-      <header className="pt-36 pb-16 px-6 sm:px-12">
+      <main id="main">
+      <header className="pt-52 sm:pt-40 pb-16 px-6 sm:px-12">
         <div className="max-w-4xl mx-auto">
           <p
             className="font-display text-[#c9a84c] tracking-widest mb-4"
             style={{ fontSize: "17px", letterSpacing: "0.14em" }}
           >
-            {project.id} / {project.type.toUpperCase()}
+            {project.type.toUpperCase()}
           </p>
           <h1
             className="font-display font-bold text-[#e8dcc8] leading-tight mb-3"
@@ -105,20 +107,87 @@ export default async function CaseStudyPage({
             ) : null}
           </div>
 
-          {project.siteUrl ? (
-            <a
-              href={project.siteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-nudge inline-flex items-center gap-2 font-display font-semibold text-[#c9a84c] hover:text-[#e8c97a] mb-8"
-              style={{ fontSize: "13px", letterSpacing: "0.16em" }}
+          <div className="flex flex-wrap gap-x-6 gap-y-3 mb-8">
+            {project.siteUrl ? (
+              <a
+                href={project.siteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-nudge inline-flex items-center gap-2 font-display font-semibold text-[#c9a84c] hover:text-[#e8c97a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c97a]"
+                style={{ fontSize: "13px", letterSpacing: "0.16em" }}
+              >
+                VISIT {new URL(project.siteUrl).host.toUpperCase()}
+                <span className="sr-only"> (opens in a new tab)</span>
+                <span className="cta-nudge cta-nudge-right" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            ) : null}
+            {project.figmaUrl ? (
+              <a
+                href={project.figmaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-nudge inline-flex items-center gap-2 font-display font-semibold text-[#c9a84c] hover:text-[#e8c97a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c97a]"
+                style={{ fontSize: "13px", letterSpacing: "0.16em" }}
+              >
+                VIEW IN FIGMA
+                <span className="sr-only"> (opens in a new tab)</span>
+                <span className="cta-nudge cta-nudge-right" aria-hidden="true">
+                  →
+                </span>
+              </a>
+            ) : null}
+          </div>
+
+          <nav aria-label="On this page" className="mb-8">
+            <p
+              className="font-display text-[#8a7a65] mb-3"
+              style={{ fontSize: "13px", letterSpacing: "0.14em" }}
             >
-              VISIT {new URL(project.siteUrl).host.toUpperCase()}
-              <span className="cta-nudge cta-nudge-right" aria-hidden="true">
-                →
-              </span>
-            </a>
-          ) : null}
+              ON THIS PAGE
+            </p>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 m-0 p-0 list-none">
+              <li>
+                <SmoothScrollLink
+                  href="#challenge"
+                  className="font-display text-[#d4c4a8] hover:text-[#c9a84c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c97a]"
+                  style={{ fontSize: "16px" }}
+                >
+                  Challenge
+                </SmoothScrollLink>
+              </li>
+              <li>
+                <SmoothScrollLink
+                  href="#approach"
+                  className="font-display text-[#d4c4a8] hover:text-[#c9a84c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c97a]"
+                  style={{ fontSize: "16px" }}
+                >
+                  Approach
+                </SmoothScrollLink>
+              </li>
+              <li>
+                <SmoothScrollLink
+                  href="#outcome"
+                  className="font-display text-[#d4c4a8] hover:text-[#c9a84c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c97a]"
+                  style={{ fontSize: "16px" }}
+                >
+                  Outcome
+                </SmoothScrollLink>
+              </li>
+              {project.showResearchProtocol ? (
+                <li>
+                  <SmoothScrollLink
+                    href="#research-protocol"
+                    className="font-display text-[#d4c4a8] hover:text-[#c9a84c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c97a]"
+                    style={{ fontSize: "16px" }}
+                  >
+                    Research protocol
+                  </SmoothScrollLink>
+                </li>
+              ) : null}
+            </ul>
+          </nav>
 
           <OrnamentalDivider />
         </div>
@@ -151,20 +220,20 @@ export default async function CaseStudyPage({
         </div>
       )}
 
-      <main className="max-w-4xl mx-auto px-6 sm:px-12 py-20 space-y-20">
-        <section>
-          <p
-            className="font-display text-[#c9a84c] tracking-widest mb-3"
-            style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
-          >
-            THE CHALLENGE
-          </p>
+      <div className="max-w-4xl mx-auto px-6 sm:px-12 py-20 space-y-20">
+        <section id="challenge" className="anchor-target focus:outline-none">
           <h2
-            className="font-display text-[#e8dcc8] font-semibold mb-6"
+            className="font-display text-[#e8dcc8] font-semibold"
             style={{ fontSize: "clamp(20px, 2.8vw, 30px)" }}
           >
-            Context & Problem
+            Challenge
           </h2>
+          <p
+            className="font-display text-[#c9a84c] mt-3 mb-6"
+            style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+          >
+            Context and problem
+          </p>
           <p
             className="font-body text-[#b8a488] leading-relaxed"
             style={{ fontSize: "18px", lineHeight: "1.95" }}
@@ -178,29 +247,30 @@ export default async function CaseStudyPage({
           )}
         </section>
 
-        {flowSection && (
-          <>
-            <div className="gold-rule" />
-            <CaseStudyVisualSection section={flowSection} />
-          </>
-        )}
-
         <div className="gold-rule" />
 
-        <section className="space-y-12">
+        <div className="space-y-20">
+        {flowSection ? (
+          <>
+            <CaseStudyVisualSection section={flowSection} />
+            <div className="gold-rule" />
+          </>
+        ) : null}
+
+        <section id="approach" className="anchor-target space-y-12 focus:outline-none">
           <div>
-            <p
-              className="font-display text-[#c9a84c] tracking-widest mb-3"
-              style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
-            >
-              MY CONTRIBUTION
-            </p>
             <h2
-              className="font-display text-[#e8dcc8] font-semibold mb-8"
+              className="font-display text-[#e8dcc8] font-semibold"
               style={{ fontSize: "clamp(20px, 2.8vw, 30px)" }}
             >
-              Approach & Ownership
+              Approach
             </h2>
+            <p
+              className="font-display text-[#c9a84c] mt-3 mb-8"
+              style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+            >
+              What I contributed
+            </p>
             <p
               className="font-body text-[#b8a488] leading-relaxed"
               style={{ fontSize: "18px", lineHeight: "1.95" }}
@@ -276,13 +346,7 @@ export default async function CaseStudyPage({
             </div>
           )}
         </section>
-
-        {project.showResearchProtocol && (
-          <>
-            <div className="gold-rule" />
-            <ResearchProtocol />
-          </>
-        )}
+        </div>
 
         {showSecondaryImage && (
           <div className="border border-[#3a3020] overflow-hidden">
@@ -328,24 +392,24 @@ export default async function CaseStudyPage({
         <div className="gold-rule" />
 
         <section>
-          <p
-            className="font-display text-[#c9a84c] tracking-widest mb-3"
-            style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
-          >
-            KEY DECISIONS
-          </p>
           <h2
-            className="font-display text-[#e8dcc8] font-semibold mb-8"
+            className="font-display text-[#e8dcc8] font-semibold"
             style={{ fontSize: "clamp(20px, 2.8vw, 30px)" }}
           >
-            Strategic Choices
+            Key decisions
           </h2>
+          <p
+            className="font-display text-[#c9a84c] mt-3 mb-8"
+            style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+          >
+            Strategic choices
+          </p>
           <ul className="space-y-6">
             {project.keyDecisions.map((decision, i) => (
               <li key={decision} className="flex items-start gap-5 border-l border-[#3a3020] pl-5">
                 <span
                   className="font-display text-[#c9a84c] flex-shrink-0 mt-1"
-                  style={{ fontSize: "11px", opacity: 0.6, letterSpacing: "0.1em" }}
+                  style={{ fontSize: "11px", letterSpacing: "0.1em" }}
                 >
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -359,19 +423,19 @@ export default async function CaseStudyPage({
 
         <div className="gold-rule" />
 
-        <section>
-          <p
-            className="font-display text-[#c9a84c] tracking-widest mb-3"
-            style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
-          >
-            OUTCOME
-          </p>
+        <section id="outcome" className="anchor-target focus:outline-none">
           <h2
-            className="font-display text-[#e8dcc8] font-semibold mb-6"
+            className="font-display text-[#e8dcc8] font-semibold"
             style={{ fontSize: "clamp(20px, 2.8vw, 30px)" }}
           >
-            Results & Evidence
+            Outcome
           </h2>
+          <p
+            className="font-display text-[#c9a84c] mt-3 mb-6"
+            style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+          >
+            Results and evidence
+          </p>
           <p
             className="font-body text-[#b8a488] leading-relaxed"
             style={{ fontSize: "18px", lineHeight: "1.9" }}
@@ -438,18 +502,18 @@ export default async function CaseStudyPage({
         <section className="border border-[#3a3020] bg-[#1a1712] p-10 relative">
           <div className="absolute top-0 left-0 w-5 h-5 border-t border-l border-[#c9a84c30]" />
           <div className="absolute bottom-0 right-0 w-5 h-5 border-b border-r border-[#c9a84c30]" />
-          <p
-            className="font-display text-[#c9a84c] tracking-widest mb-3"
-            style={{ fontSize: "17px", letterSpacing: "0.14em", marginBottom: "12px" }}
-          >
-            LEADERSHIP LENS
-          </p>
           <h2
-            className="font-display text-[#e8dcc8] font-semibold mb-5"
-            style={{ fontSize: "clamp(16px, 2vw, 22px)" }}
+            className="font-display text-[#e8dcc8] font-semibold"
+            style={{ fontSize: "clamp(20px, 2.8vw, 30px)" }}
           >
-            What This Demonstrates
+            Leadership lens
           </h2>
+          <p
+            className="font-display text-[#c9a84c] mt-3 mb-5"
+            style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+          >
+            What this demonstrates
+          </p>
           <p
             className="font-body text-[#e8dcc8]"
             style={{ fontSize: "17px", lineHeight: "1.8" }}
@@ -457,7 +521,14 @@ export default async function CaseStudyPage({
             {project.leadershipLens}
           </p>
         </section>
-      </main>
+
+        {project.showResearchProtocol && (
+          <>
+            <div className="gold-rule" />
+            <ResearchProtocol />
+          </>
+        )}
+      </div>
 
       <div
         className="border-t border-[#3a3020] py-16 px-6 sm:px-12"
@@ -475,7 +546,7 @@ export default async function CaseStudyPage({
               <div>
                 <p
                   className="font-display text-[#8a7a65]"
-                  style={{ fontSize: "9px", letterSpacing: "0.2em" }}
+                  style={{ fontSize: "13px", letterSpacing: "0.14em" }}
                 >
                   PREVIOUS
                 </p>
@@ -506,7 +577,7 @@ export default async function CaseStudyPage({
               <div>
                 <p
                   className="font-display text-[#8a7a65]"
-                  style={{ fontSize: "9px", letterSpacing: "0.2em" }}
+                  style={{ fontSize: "13px", letterSpacing: "0.14em" }}
                 >
                   NEXT
                 </p>
@@ -526,6 +597,8 @@ export default async function CaseStudyPage({
           )}
         </div>
       </div>
+      </main>
+      <div id="scroll-end-spacer" aria-hidden="true" />
     </div>
   );
 }

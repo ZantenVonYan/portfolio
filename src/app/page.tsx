@@ -1,7 +1,7 @@
+import Link from "next/link";
 import Nav from "@/components/Nav";
 import OrnamentalDivider from "@/components/OrnamentalDivider";
 import ProjectCard from "@/components/ProjectCard";
-import SectionLabel from "@/components/SectionLabel";
 import IllustrationGallery from "@/components/IllustrationGallery";
 import ImpactMetrics from "@/components/ImpactMetrics";
 import { illustrations } from "@/data/illustrations";
@@ -13,25 +13,29 @@ const selectedImpact = [
   {
     value: "2",
     label: "Major product initiatives",
-    description:
-      "SupplyProof and Product Catalog — end-to-end design and delivery contributions in 2026.",
+    description: "End-to-end design and delivery in 2026.",
+    links: [
+      { href: "/project/supply-proof", label: "SupplyProof" },
+      { href: "#product-catalog", label: "Product Catalog" },
+    ],
   },
   {
     value: "5",
     label: "Client workshops",
-    description:
-      "Participated in during 2025, including three for SupplyProof, gathering feedback to inform product decisions.",
+    description: "In 2025, including three for SupplyProof.",
+    links: [{ href: "/project/supply-proof", label: "SupplyProof" }],
   },
   {
     value: "2",
     label: "Designers mentored",
-    description: "One year of formal mentorship, about 18 months including training.",
+    description: "One year formally, about 18 months including training.",
+    links: [{ href: "/project/ux-practice-framework", label: "UX Practice Framework" }],
   },
   {
     value: "2",
     label: "UX practice initiatives",
-    description:
-      "The Buddy System and UX research guidelines with a shared repository, introduced in January 2026.",
+    description: "The Buddy System and shared research guidelines, January 2026.",
+    links: [{ href: "/project/ux-practice-framework", label: "UX Practice Framework" }],
   },
 ];
 
@@ -58,17 +62,17 @@ const leadershipPillars = [
   {
     icon: GearIcon,
     title: "Buddy System",
-    body: "Introduced in January 2026 so designers could get earlier feedback, work through problems together, and share knowledge before formal critique. Participants reported earlier issue spotting, faster alignment, more room to explore alternatives, and better preparation for design reviews.",
+    body: "Introduced in January 2026 so designers could get earlier feedback before formal critique.",
   },
   {
     icon: PotionIcon,
     title: "Mentoring & Quality",
-    body: "Mentored two designers for one year formally, about 18 months including training. The focus is structured feedback and professional development: helping designers explain their reasoning, prepare for reviews, and own their trade-offs.",
+    body: "Mentored two designers for one year formally, about 18 months including training.",
   },
   {
     icon: WrenchIcon,
     title: "Design → Development",
-    body: "Co-led more than five Figma workshops with another design lead, across design, development, QA, and management. Participants showed a clearer grasp of design system components and documentation, and developers began using exact Figma measurements instead of ruler-based approximations.",
+    body: "Co-led more than five Figma workshops with another design lead, across design, development, QA, and management.",
   },
 ];
 
@@ -77,7 +81,8 @@ export default function HomePage() {
     <div className="min-h-screen bg-stone-gradient text-[#e8dcc8]">
       <Nav />
 
-      <header className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-48 sm:pt-20 pb-24 overflow-hidden">
+      <main id="main">
+      <header className="relative min-h-screen flex flex-col items-center justify-center px-6 pt-56 sm:pt-20 pb-24 overflow-hidden">
         <div
           className="absolute inset-0 opacity-[0.04] pointer-events-none"
           style={{
@@ -98,16 +103,11 @@ export default function HomePage() {
           </p>
 
           <h1
-            className="font-display font-bold text-[#e8dcc8] leading-none animate-in animate-delay-1"
+            className="font-display font-bold leading-none mb-8 animate-in animate-delay-1"
             style={{ fontSize: "clamp(38px, 6.5vw, 78px)" }}
           >
-            Ana Mangotić
-          </h1>
-          <h1
-            className="font-display font-bold leading-none mb-8 animate-in animate-delay-2"
-            style={{ fontSize: "clamp(38px, 6.5vw, 78px)", color: "#c9a84c" }}
-          >
-            Rajković
+            <span className="block text-[#e8dcc8]">Ana Mangotić</span>
+            <span className="block text-[#c9a84c]">Rajković</span>
           </h1>
 
           <OrnamentalDivider className="animate-in animate-delay-2" />
@@ -130,9 +130,9 @@ export default function HomePage() {
               margin: "0 auto 40px",
             }}
           >
-            I help B2B SaaS and enterprise teams turn complex workflows into intuitive, scalable
-            experiences — the way a tool is made: strategy, research, and hands-on delivery, fitted
-            from discovery through implementation.
+            I help product teams, especially in B2B SaaS and enterprise, turn complex workflows
+            into intuitive, scalable experiences — the way a tool is made: strategy, research, and
+            hands-on delivery, fitted from discovery through implementation.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in animate-delay-4">
@@ -147,28 +147,28 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section id="work" className="max-w-6xl mx-auto px-6 py-24 scroll-mt-36">
+      <section id="work" className="max-w-6xl mx-auto px-6 py-24 anchor-target">
         <div className="text-center mb-16">
-          <SectionLabel>Selected Work</SectionLabel>
           <h2
             className="font-display text-[#e8dcc8] font-semibold"
             style={{ fontSize: "clamp(22px, 3.5vw, 38px)" }}
           >
-            Featured Projects
+            Work
           </h2>
+          <p
+            className="font-display text-[#c9a84c] mt-3"
+            style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+          >
+            Selected work
+          </p>
           <OrnamentalDivider />
           <p
             className="font-body text-[#d4c4a8] mt-4 max-w-xl mx-auto"
             style={{ fontSize: "18px", lineHeight: "1.7" }}
           >
-            Both sides of my practice: products shaped by hand, and the shared tools that help a
-            design team work to one standard.
-          </p>
-          <p
-            className="font-body text-[#d4c4a8] mt-3 max-w-xl mx-auto"
-            style={{ fontSize: "18px", lineHeight: "1.7" }}
-          >
-            New projects will be added here as time passes.
+            Featured case studies, the Product Catalog summary, and earlier projects. Both sides of
+            my practice: products shaped by hand, and the shared tools that help a design team work
+            to one standard. New projects will be added here as time passes.
           </p>
         </div>
 
@@ -180,7 +180,10 @@ export default function HomePage() {
             ))}
         </div>
 
-        <article className="mt-8 border border-[#3a3020] bg-[#1a1712] p-8 md:p-10 relative">
+        <article
+          id="product-catalog"
+          className="mt-8 anchor-target border border-[#3a3020] bg-[#1a1712] p-8 md:p-10 relative"
+        >
           <div className="absolute top-0 left-0 w-3 h-3 border-t border-l border-[#c9a84c30]" />
           <div className="absolute bottom-0 right-0 w-3 h-3 border-b border-r border-[#c9a84c30]" />
           <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
@@ -207,6 +210,9 @@ export default function HomePage() {
               >
                 {productCatalogHighlight.title}
               </h3>
+              <p className="font-body text-[#e8c97a] mt-3" style={{ fontSize: "16px", lineHeight: "1.6" }}>
+                Summary on this page. A full case study is not published for this project.
+              </p>
             </div>
             <span
               className="font-display font-semibold text-[#e8dcc8] border border-[#867e72] px-3 py-1"
@@ -222,14 +228,8 @@ export default function HomePage() {
             {productCatalogHighlight.overview}
           </p>
           <ul className="space-y-4 m-0 mb-8 p-0 list-none">
-            {productCatalogHighlight.contributions.map((item, i) => (
-              <li key={item} className="flex items-start gap-4 border-l border-[#3a3020] pl-4">
-                <span
-                  className="font-display text-[#c9a84c] flex-shrink-0 mt-0.5"
-                  style={{ fontSize: "11px", opacity: 0.6, letterSpacing: "0.1em" }}
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+            {productCatalogHighlight.contributions.map((item) => (
+              <li key={item} className="border-l border-[#3a3020] pl-4">
                 <p className="font-body text-[#d4c4a8]" style={{ fontSize: "18px", lineHeight: "1.7" }}>
                   {item}
                 </p>
@@ -247,18 +247,47 @@ export default function HomePage() {
             {productCatalogHighlight.outcome}
           </p>
         </article>
+
+        <div id="earlier-work" className="mt-20 anchor-target">
+          <div className="mb-12">
+            <h3
+              className="font-display text-[#e8dcc8] font-semibold"
+              style={{ fontSize: "clamp(20px, 3vw, 32px)" }}
+            >
+              Earlier work
+            </h3>
+            <p
+              className="font-display text-[#c9a84c] mt-3"
+              style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+            >
+              Foundational projects
+            </p>
+            <OrnamentalDivider />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {earlierWork.map((project, i) => (
+              <ProjectCard key={project.id} project={project} index={i} headingLevel={4} />
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section id="impact" className="border-t border-[#3a3020] py-20 px-6 scroll-mt-36">
+      <section id="impact" className="border-t border-[#3a3020] py-20 px-6 anchor-target">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <SectionLabel>Selected Impact</SectionLabel>
             <h2
               className="font-display text-[#e8dcc8] font-semibold"
               style={{ fontSize: "clamp(22px, 3.5vw, 38px)" }}
             >
-              Contributions at a Glance
+              Impact
             </h2>
+            <p
+              className="font-display text-[#c9a84c] mt-3"
+              style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+            >
+              Contributions at a glance
+            </p>
             <OrnamentalDivider />
             <p
               className="font-body text-[#d4c4a8] mt-4 max-w-xl mx-auto"
@@ -273,18 +302,23 @@ export default function HomePage() {
 
       <section
         id="leadership"
-        className="border-t border-[#3a3020] py-24 px-6 scroll-mt-36"
+        className="border-t border-[#3a3020] py-24 px-6 anchor-target"
         style={{ background: "#12100d" }}
       >
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <SectionLabel>Design Leadership</SectionLabel>
             <h2
               className="font-display text-[#e8dcc8] font-semibold"
               style={{ fontSize: "clamp(22px, 3.5vw, 38px)" }}
             >
-              Design Leadership & Team Enablement
+              Leadership
             </h2>
+            <p
+              className="font-display text-[#c9a84c] mt-3"
+              style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+            >
+              Design leadership and team enablement
+            </p>
             <OrnamentalDivider />
             <p
               className="font-body text-[#d4c4a8] mt-4 max-w-xl mx-auto"
@@ -307,7 +341,7 @@ export default function HomePage() {
                 </p>
                 <h3
                   className="font-display text-[#e8dcc8] font-semibold mb-3"
-                  style={{ fontSize: "15px" }}
+                  style={{ fontSize: "22px" }}
                 >
                   {pillar.title}
                 </h3>
@@ -317,6 +351,17 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          <p className="text-center mt-12">
+            <Link
+              href="/project/ux-practice-framework"
+              className="link-nudge inline-flex items-center gap-2 font-display text-[#c9a84c] hover:text-[#e8c97a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c97a]"
+              style={{ fontSize: "13px", letterSpacing: "0.14em" }}
+            >
+              VIEW THE UX PRACTICE FRAMEWORK CASE STUDY
+              <span className="cta-nudge cta-nudge-right" aria-hidden="true">→</span>
+            </Link>
+          </p>
 
           <p
             className="font-body text-[#e8c97a] text-center max-w-2xl mx-auto mt-12"
@@ -329,37 +374,21 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-[#3a3020] py-20 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="mb-12">
-            <SectionLabel>Earlier Work</SectionLabel>
-            <h2
-              className="font-display text-[#e8dcc8] font-semibold"
-              style={{ fontSize: "clamp(20px, 3vw, 32px)" }}
-            >
-              Foundational Projects
-            </h2>
-            <OrnamentalDivider />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {earlierWork.map((project, i) => (
-              <ProjectCard key={project.id} project={project} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="illustration" className="border-t border-[#3a3020] py-24 px-6 scroll-mt-36">
+      <section id="illustration" className="border-t border-[#3a3020] py-24 px-6 anchor-target">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <SectionLabel>Illustration</SectionLabel>
             <h2
               className="font-display text-[#e8dcc8] font-semibold"
               style={{ fontSize: "clamp(22px, 3.5vw, 38px)" }}
             >
-              Craft Beyond the Screen
+              Illustration
             </h2>
+            <p
+              className="font-display text-[#c9a84c] mt-3"
+              style={{ fontSize: "18px", letterSpacing: "0.08em" }}
+            >
+              Craft beyond the screen
+            </p>
             <OrnamentalDivider />
             <p
               className="font-body text-[#d4c4a8] mt-4 max-w-xl mx-auto"
@@ -375,21 +404,24 @@ export default function HomePage() {
 
       <section
         id="about"
-        className="border-t border-[#3a3020] py-24 px-6 scroll-mt-36"
+        className="border-t border-[#3a3020] py-24 px-6 anchor-target"
         style={{ background: "#12100d" }}
       >
         <div className="max-w-5xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-[1fr_1.15fr_1.35fr] gap-10 md:gap-12 items-start">
             <div>
-              <SectionLabel>About</SectionLabel>
               <h2
-                className="font-display text-[#e8dcc8] font-semibold leading-tight mb-6"
+                className="font-display text-[#e8dcc8] font-semibold leading-tight mb-3"
                 style={{ fontSize: "clamp(22px, 3vw, 34px)" }}
               >
-                The
-                <br />
-                <span style={{ color: "#c9a84c" }}>Artificer</span>
+                About
               </h2>
+              <p
+                className="font-display font-semibold leading-tight mb-6"
+                style={{ fontSize: "clamp(22px, 3vw, 34px)", color: "#c9a84c" }}
+              >
+                The Artificer
+              </p>
               <OrnamentalDivider />
               <ul className="mt-8 space-y-3 m-0 p-0 list-none">
                 {skills.map((skill) => (
@@ -464,7 +496,6 @@ export default function HomePage() {
                 style={{ fontSize: "18px", lineHeight: "1.8" }}
               >
                 I&apos;m also working on AI topics, using Microsoft Copilot, Claude, and Cursor.
-                This site will be updated with new projects as time passes.
               </p>
               <p className="font-body text-[#e8c97a]" style={{ fontSize: "17px", lineHeight: "1.6" }}>
                 &quot;Structure, curiosity, clarity, and care for the tools of the craft.&quot;
@@ -482,27 +513,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="contact" className="border-t border-[#3a3020] py-24 px-6 scroll-mt-36">
+      <section id="contact" className="border-t border-[#3a3020] py-24 px-6 anchor-target">
         <div className="max-w-2xl mx-auto text-center">
           <div className="mb-6 flex justify-center text-[#c9a84c]" style={{ opacity: 0.85 }}>
             <PotionIcon size={52} />
           </div>
-          <SectionLabel>Contact</SectionLabel>
           <h2
-            className="font-display text-[#e8dcc8] font-semibold mb-4"
+            className="font-display text-[#e8dcc8] font-semibold mb-3"
             style={{ fontSize: "clamp(22px, 3.5vw, 38px)" }}
           >
-            Begin a Collaboration
+            Contact
           </h2>
+          <p className="font-display text-[#c9a84c] mb-4" style={{ fontSize: "18px", letterSpacing: "0.08em" }}>
+            Begin a collaboration
+          </p>
           <OrnamentalDivider />
           <p
-            className="font-body text-[#d4c4a8] mt-6 mb-10"
+            className="font-body text-[#d4c4a8] mt-6 mb-6"
             style={{ fontSize: "18px", lineHeight: "1.7" }}
           >
             Better products start at the bench: clear thinking, then careful making. I&apos;m open to
             remote Lead and Principal UX/UI roles in B2B SaaS and enterprise organizations, as well as
             consultations and creative partnerships — especially work that shapes product direction
             and strengthens design maturity. Every great design begins with a conversation.
+          </p>
+          <p className="mb-8">
+            <a
+              href="mailto:vanna.ana@hotmail.com"
+              className="font-body text-[#e8dcc8] underline decoration-[#c9a84c] underline-offset-4 hover:text-[#c9a84c] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#e8c97a]"
+              style={{ fontSize: "20px" }}
+            >
+              vanna.ana@hotmail.com
+            </a>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href="mailto:vanna.ana@hotmail.com" className={primaryCta} style={ctaStyle}>
@@ -516,16 +558,18 @@ export default function HomePage() {
               style={ctaStyle}
             >
               LINKEDIN
+              <span className="sr-only"> (opens in a new tab)</span>
               <span className="cta-nudge cta-nudge-right" aria-hidden="true">→</span>
             </a>
           </div>
         </div>
       </section>
+      </main>
 
       <footer className="border-t border-[#3a3020] py-6 px-6" style={{ background: "#0a0907" }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-display text-[#8a7a65]" style={{ fontSize: "9px", letterSpacing: "0.2em" }}>
-            © 2024 ANA MANGOTIĆ RAJKOVIĆ
+          <p className="font-display text-[#8a7a65]" style={{ fontSize: "13px", letterSpacing: "0.14em" }}>
+            © 2026 ANA MANGOTIĆ RAJKOVIĆ
           </p>
           <p className="font-body text-[#8a7a65]" style={{ fontSize: "14px" }}>
             Lead UX/UI Designer
