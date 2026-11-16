@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cinzel, Crimson_Text } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const cinzel = Cinzel({
@@ -27,6 +28,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${cinzel.variable} ${crimson.variable} h-full antialiased`}
     >
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtm.js?id=GTM-WNNQDTKP"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          `}
+        </Script>
+      </head>
       <body className="min-h-full flex flex-col font-body">{children}</body>
     </html>
   );
